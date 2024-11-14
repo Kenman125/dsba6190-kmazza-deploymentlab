@@ -31,6 +31,7 @@ resource "azurerm_resource_group" "rg" {
 }
 
 
+
 // Storage Account
 
 resource "azurerm_storage_account" "storage" {

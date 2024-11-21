@@ -42,7 +42,7 @@ resource "azurerm_subnet" "subnet" {
   resource_group_name  = azurerm_resource_group.rg.name
   virtual_network_name = azurerm_virtual_network.vnet.name
   address_prefixes     = ["10.7.29.0/29"]
-  service_endpoints    = ["Microsoft.Sql"]
+  service_endpoints    = ["Microsoft.Sql", "Microsoft.Storage"]
 }
 
 resource "azurerm_mssql_server" "sqlserver" {

@@ -55,6 +55,14 @@ resource "azurerm_mssql_server" "sqlserver" {
 }
 
 #add sql db here
+resource "azurerm_mssql_database" "db" {
+  name        = "db-${var.class_name}-${var.student_name}-${var.environment}-${random_integer.deployment_id_suffix.result}"
+  server_id   = azurerm_mssql_server.sqlserver.id
+  collation   = "SQL_Latin1_General_CP1_CI_AS"
+  max_size_gb = 1
+  read_scale  = false
+  sku_name    = "Basic"
+}
 
 resource "azurerm_mssql_virtual_network_rule" "vnet_rule" {
   name      = "sql-vnet-rule-${var.class_name}-${var.student_name}-${var.environment}-${var.location}-${random_integer.deployment_id_suffix.result}"
